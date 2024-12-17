@@ -5,8 +5,18 @@ import Footer from "@/components/Footer";
 import Search from "@/components/Search";
 import WeatherBlock from "@/components/WeatherBlock";
 
+type WeatherData = {
+  location: { name: string; country: string };
+  current: {
+    temp_c: number;
+    condition: { text: string; icon: string };
+    wind_kph: number;
+    humidity: number;
+  };
+};
+
 export default function Home() {
-  const [weatherData, setWeatherData] = useState<any>(null);
+  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string>("");
 
   const fetchWeather = async (city: string) => {
@@ -21,8 +31,11 @@ export default function Home() {
       }
       const data = await response.json();
       setWeatherData(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+        setError("An unknown error occurred");
+      }
       setWeatherData(null);
     }
   };
