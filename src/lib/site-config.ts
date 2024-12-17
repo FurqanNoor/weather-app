@@ -4,5 +4,5 @@ export const siteConfig = {
   description: "just a random weather app",
   ogImage: "",
   twitterHandle: "@furggoo",
-  lastUpdated: "December 15, 2024",
+  lastUpdated: "December 17, 2024",
 };

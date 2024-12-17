@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 
-// Import and configure the Inter font
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
@@ -59,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} container max-w-2xl mx-auto min-h-screen flex flex-col px-4 py-5`}
+      className={`${inter.variable} container max-w-xl mx-auto min-h-screen flex flex-col px-4 py-5`}
     >
       <head></head>
       <body>{children}</body>
